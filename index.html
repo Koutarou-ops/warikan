@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>飲み会かんたん割り勘</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>飲み会かんたん割り勘</h1>
+    <p class="lead">合計金額と人数を入れると、1人あたりの金額を100円単位で計算します。</p>
+
+    <form id="warikan-form">
+      <label for="total">合計金額（円）</label>
+      <input type="number" id="total" min="0" placeholder="例：10000">
+
+      <label for="people">人数（人）</label>
+      <input type="number" id="people" min="1" placeholder="例：3">
+
+      <button type="submit">計算する</button>
+    </form>
+
+    <p id="error" class="error"></p>
+
+    <section id="result" class="result">
+      <p>1人あたり：<span id="per-person">-</span> 円</p>
+      <p>集める合計：<span id="collect-total">-</span> 円</p>
+      <p>余り（幹事の手元に残る額）：<span id="remainder">-</span> 円</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
