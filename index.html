@@ -9,14 +9,36 @@
 <body>
   <main class="container">
     <h1>飲み会かんたん割り勘</h1>
-    <p class="lead">合計金額と人数を入れると、1人あたりの金額を100円単位で計算します。</p>
+    <p class="lead">合計金額と、先輩・同期・後輩の人数と払う割合を入れると、立場ごとの1人あたりの金額を100円単位で計算します。</p>
 
     <form id="warikan-form" novalidate>
       <label for="total">合計金額（円）</label>
       <input type="number" id="total" min="0" placeholder="例：10000">
 
-      <label for="people">人数（人）</label>
-      <input type="number" id="people" min="1" placeholder="例：3">
+      <!-- 立場ごとに「人数」と「払う割合（スライダー）」を入れる -->
+      <fieldset class="role">
+        <legend>先輩</legend>
+        <label for="senior-count">人数（人）</label>
+        <input type="number" id="senior-count" min="0" placeholder="例：1">
+        <label for="senior-rate">払う割合：<output id="senior-rate-value">1.5</output></label>
+        <input type="range" id="senior-rate" min="0.5" max="2.0" step="0.1" value="1.5">
+      </fieldset>
+
+      <fieldset class="role">
+        <legend>同期</legend>
+        <label for="peer-count">人数（人）</label>
+        <input type="number" id="peer-count" min="0" placeholder="例：2">
+        <label for="peer-rate">払う割合：<output id="peer-rate-value">1.0</output></label>
+        <input type="range" id="peer-rate" min="0.5" max="2.0" step="0.1" value="1.0">
+      </fieldset>
+
+      <fieldset class="role">
+        <legend>後輩</legend>
+        <label for="junior-count">人数（人）</label>
+        <input type="number" id="junior-count" min="0" placeholder="例：1">
+        <label for="junior-rate">払う割合：<output id="junior-rate-value">0.7</output></label>
+        <input type="range" id="junior-rate" min="0.5" max="2.0" step="0.1" value="0.7">
+      </fieldset>
 
       <button type="submit">計算する</button>
     </form>
@@ -24,7 +46,19 @@
     <p id="error" class="error"></p>
 
     <section id="result" class="result">
-      <p>1人あたり：<span id="per-person">-</span> 円</p>
+      <table>
+        <thead>
+          <tr>
+            <th>立場</th>
+            <th>人数</th>
+            <th>割合</th>
+            <th>1人あたり</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <!-- 中身は script.js で書き込む -->
+        <tbody id="result-body"></tbody>
+      </table>
       <p>集める合計：<span id="collect-total">-</span> 円</p>
       <p>余り（幹事の手元に残る額）：<span id="remainder">-</span> 円</p>
     </section>

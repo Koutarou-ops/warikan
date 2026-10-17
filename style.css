@@ -40,6 +40,37 @@ input {
   border-radius: 4px;
 }
 
+/* 立場（先輩・同期・後輩）ごとの入力ブロック */
+.role {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 8px 12px 12px;
+  border: 1px solid #cfe0f5;
+  border-radius: 8px;
+}
+
+.role legend {
+  font-weight: bold;
+  color: #2b6cb0;
+  padding: 0 4px;
+}
+
+/* スライダーは横いっぱいにし、普通の入力欄の枠線・余白は付けない */
+input[type="range"] {
+  width: 100%;
+  padding: 0;
+  border: none;
+  accent-color: #2b6cb0;
+}
+
+/* スライダーの今の値（例：1.5）を目立たせる */
+output {
+  font-weight: bold;
+  color: #2b6cb0;
+}
+
 button {
   margin-top: 8px;
   font-size: 1rem;
@@ -71,4 +102,28 @@ button:hover {
 .result span {
   font-size: 1.25rem;
   font-weight: bold;
+}
+
+/* 立場ごとの金額の表 */
+.result table {
+  width: 100%;
+  margin-top: 8px;
+  border-collapse: collapse;
+}
+
+.result th,
+.result td {
+  padding: 6px 4px;
+  border-bottom: 1px solid #ddd;
+}
+
+.result th {
+  background-color: #f0f6ff;
+  font-size: 0.9rem;
+}
+
+/* 1列目（立場）以外は数字なので右寄せにする */
+.result th:not(:first-child),
+.result td:not(:first-child) {
+  text-align: right;
 }
