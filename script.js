@@ -14,6 +14,8 @@ const roles = [
 ];
 
 // 立場ごとに、人数・割合の入力欄と割合の表示欄を取得しておく
+// メモ：roles の3つの要素それぞれに、人数・スライダー・割合の数字の場所を追加する
+// メモ：スライダーは ━━━━●━━━━ を表示するときに使う（値を入れる部品）
 roles.forEach(function (role) {
   role.countInput = document.getElementById(role.key + '-count');
   role.rateInput = document.getElementById(role.key + '-rate');
