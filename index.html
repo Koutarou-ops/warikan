@@ -9,7 +9,7 @@
 <body>
   <main class="container">
     <h1>飲み会かんたん割り勘</h1>
-    <p class="lead">合計金額と、先輩・同期・後輩の人数と払う割合を入れると、立場ごとの1人あたりの金額を100円単位で計算します。</p>
+    <p class="lead">合計金額と、先輩・同期・後輩の人数と払う割合を入れると、立場ごとの1人あたりの金額を、選んだ単位（1円・10円・100円）で切り上げて計算します。</p>
 
     <form id="warikan-form" novalidate>
       <label for="total">合計金額（円）</label>
@@ -38,6 +38,16 @@
         <input type="number" id="junior-count" min="0" placeholder="例：1">
         <label for="junior-rate">払う割合：<output id="junior-rate-value">0.7</output></label>
         <input type="range" id="junior-rate" min="0.5" max="2.0" step="0.1" value="0.7">
+      </fieldset>
+
+      <!-- 1人あたりの金額を、何円単位で切り上げるかを選ぶ -->
+      <fieldset class="role">
+        <legend>端数の単位（切り上げ）</legend>
+        <div class="unit-options">
+          <label><input type="radio" name="unit" value="1"> 1円</label>
+          <label><input type="radio" name="unit" value="10"> 10円</label>
+          <label><input type="radio" name="unit" value="100" checked> 100円</label>
+        </div>
       </fieldset>
 
       <button type="submit">計算する</button>

@@ -65,6 +65,19 @@ input[type="range"] {
   accent-color: #2b6cb0;
 }
 
+/* 端数の単位のラジオボタンを横1列に並べる */
+.unit-options {
+  display: flex;
+  gap: 16px;
+}
+
+/* ラジオボタンには、普通の入力欄の枠線・余白を付けない */
+input[type="radio"] {
+  padding: 0;
+  border: none;
+  accent-color: #2b6cb0;
+}
+
 /* スライダーの今の値（例：1.5）を目立たせる */
 output {
   font-weight: bold;
