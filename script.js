@@ -35,6 +35,11 @@ function updateRateTexts() {
   });
 }
 
+// 選ばれている端数の単位（1・10・100 円）を数値で返す
+function getUnit() {
+  return Number(form.querySelector('input[name="unit"]:checked').value);
+}
+
 // 表に1行追加する（cells は各マスに入れる文字の配列）
 function addRow(cells) {
   const tr = document.createElement('tr');
@@ -91,10 +96,11 @@ function calculate(total, counts) {
     weightSum += count * rates10[i];
   });
 
+  const unit = getUnit();
   let collectTotal = 0;
   const rows = roles.map(function (role, i) {
-    // 1人あたりを100円単位で切り上げる（例：3334円 → 3400円）
-    const perPerson = Math.ceil((total * rates10[i]) / weightSum / 100) * 100;
+    // 1人あたりを選んだ単位で切り上げる（例：100円なら 3334円 → 3400円）
+    const perPerson = Math.ceil((total * rates10[i]) / weightSum / unit) * unit;
     const subtotal = perPerson * counts[i];
     collectTotal += subtotal;
     return { label: role.label, count: counts[i], rate: rates10[i] / 10, perPerson: perPerson, subtotal: subtotal };
